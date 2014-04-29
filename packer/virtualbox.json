@@ -1,0 +1,48 @@
+{
+  "builders": [
+    {
+      "boot_wait": "120s",
+      "source_path": "../images/firefly/junos-vsrx-12.1X46-D15.3-domestic.ova",
+      "format": "ova",
+      "output_directory": "packer-junos-vsrx-12.1X46-D15.3-virtualbox",
+      "shutdown_command": "halt",
+      "ssh_port": 22,
+      "ssh_username": "root",
+      "ssh_password": "Juniper",
+      "ssh_wait_timeout": "10000s",
+
+      "type": "virtualbox-ovf",
+
+      "vboxmanage": [
+          ["modifyvm", "{{.Name}}", "--memory", "2048"],
+          ["modifyvm", "{{.Name}}", "--cpus", "2"],
+          ["modifyvm", "{{.Name}}", "--nictype1", "virtio"],
+          ["modifyvm", "{{.Name}}", "--nictype2", "virtio"],
+          ["modifyvm", "{{.Name}}", "--nic1", "nat"],
+          ["modifyvm", "{{.Name}}", "--nic2", "bridged"],
+          ["modifyvm", "{{.Name}}", "--nictrace1", "on"],
+          ["modifyvm", "{{.Name}}", "--nictracefile1", "/tmp/vboxnictrace.log"],
+          ["modifyvm", "{{.Name}}", "--nicpromisc1", "allow-all"],
+          ["modifyvm", "{{.Name}}", "--nicpromisc2", "allow-all"],
+          ["modifyvm", "{{.Name}}", "--boot1", "disk"],
+          ["modifyvm", "{{.Name}}", "--uart1", "0x3F8", "4"],
+          ["modifyvm", "{{.Name}}", "--uartmode1", "disconnected"]
+      ],
+      "vm_name": "packer-junos-vsrx-12.1X46-D15.3"
+    }
+  ],
+  "post-processors": [
+    {
+      "output": "builds/{{.Provider}}/junos-vsrx-12.1X46-D15.3-virtualbox.box",
+      "type": "vagrant"
+    }
+  ],
+  "provisioners": [
+    {
+      "scripts": [
+        "scripts/common/vagrant.sh"
+      ],
+      "type": "shell"
+    }
+  ]
+}
