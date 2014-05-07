@@ -6,7 +6,7 @@ require 'junos-ez/srx'      #Library to simplify srx management
 
 # login information for NETCONF session 
 #
-login = { :target => '172.21.203.91', :username => 'root',  :password => 'juniper123',  }
+login = { :target => '10.0.1.161', :username => 'root',  :password => 'PiZZ@!@#!@#',  }
 
 #create a connection object
 dev = Netconf::SSH.new( login )
