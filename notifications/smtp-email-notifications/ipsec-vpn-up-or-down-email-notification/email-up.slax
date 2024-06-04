@@ -1,0 +1,33 @@
+version 1.1;
+ns junos = "http://xml.juniper.net/junos/*/junos";
+ns xnm = "http://xml.juniper.net/xnm/1.1/xnm";
+ns jcs = "http://xml.juniper.net/junos/commit-scripts/1.0";
+ns curl extension = "http://xml.libslax.org/curl";
+ 
+import "../import/junos.xsl";
+ 
+var $message =event-script-input/trigger-event/message;
+var $contents = "Dear Customer,\nThis is an email notification that your IPSEC VPN is up.\nThanks,\nSRX02\n\n" _$message;
+ 
+match / {
+    <event-script-results> {
+        <output> {
+        var $conn = jcs:open();
+        var $email = {
+ 
+        <method> "email";
+        <server> "X.X.X.X";
+        <from> "srx02@fromjuniper.com";
+        <to> "customer@company.com";
+ 
+        <subject> "IPSEC VPN Up";
+        <contents> $contents;
+        }
+ 
+        var $smtp-results = curl:single($email);
+        var $send = jcs:invoke($smtp-results);
+ 
+        expr jcs:close($conn);
+        }
+    }
+}

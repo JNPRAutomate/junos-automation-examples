@@ -1,0 +1,3 @@
+admin@SRX02> show security ike security-associations 
+Index   State  Initiator cookie  Responder cookie  Mode           Remote Address
+13981   UP     8474a0ff34e5deb6  62d85f913c0d6e94  IKEv2          X.X.X.X 
