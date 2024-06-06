@@ -1,6 +1,6 @@
 Title: IPSEC VPN Up or Down Email Notification\
 Author: Jessica Garrison\
-Type of script: Op\
+Type of Junos Script: Op\
 Language: SLAX\
 XML Version: 1.2\
 Minimum Junos Version: 14?
