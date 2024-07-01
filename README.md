@@ -14,6 +14,7 @@ Directory structure (building out in 2024)
     - event triggered root case analysis
 - hardening
 - installations or deployments (Day 0 or Day 1)
+- licensing
 - notifications
     - emails (SMTP)
     - SNMP Traps
