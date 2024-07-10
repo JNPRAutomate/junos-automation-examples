@@ -19,6 +19,6 @@ Directory structure (building out in 2024)
     - emails (SMTP)
     - SNMP Traps
 - testing or validation
-- upgrades
+- [upgrades](https://github.com/JNPRAutomate/junos-software-upgrades)
 
 This project is a repository developed by the Juniper community. Some "automation" does not require a script, so there is no requirement for automation examples to have a script in their individual directories. 
