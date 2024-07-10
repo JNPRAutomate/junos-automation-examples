@@ -1,0 +1,66 @@
+version 1.2;
+
+ns junos = "http://xml.juniper.net/junos/*/junos";
+ns xnm = "http://xml.juniper.net/xnm/1.1/xnm";
+ns jcs = "http://xml.juniper.net/junos/commit-scripts/1.0";
+
+import "../import/junos.xsl";
+
+match / {
+    <op-script-results> {
+
+        /* show interfaces extensive to capture description, status, duplex, and speed */
+        var $rpc1 = {
+            <get-interface-information> {
+                <extensive>;
+            }
+        }
+        var $int = jcs:invoke( $rpc1 );
+
+        /* show ethernet-switching interfaces to capture port, vlan id, and tagging */
+        var $rpc2 = {
+            <get-ethernet-switching-interface-details> {
+                <detail>;
+            }
+        }
+        var $eth = jcs:invoke( $rpc2 );
+
+        /* print the header */
+        <output> jcs:printf( "%-20s%-27s%-11s%-12s%-20s%-16s%-18s", "Port", "Description", "Status", "VLAN ID", "Tagging", "Duplex", "Speed");
+
+        for-each ( $eth/l2ng-l2ald-iff-interface-entry[l2iff-interface-vlan-member-tagness == "tagged"]/l2iff-interface-name  ) {
+            var $intname = .;
+            if( jcs:empty( following::l2iff-interface-name[ . == $intname ])) {
+
+                /* grabbing the name of the physical interface ignoring the .0 */
+                var $etname = substring-before($intname,".");
+
+                /* default is Full-Duplex */
+                var $duplex = {
+                    if( $int/physical-interface/link-type == "Unspecified") {
+                        expr "Full-Duplex";
+                    }
+                    else {
+                        expr $int/physical-interface/link-type;
+                    }
+                }
+                <output> jcs:printf( "%-20s%-27s%-11s%-12s%-20s%-16s%-18s", $etname, $int/physical-interface/link-level-type, $int/physical-interface/oper-status, "", "tagged", $duplex, $int/physical-interface/speed);
+
+            }
+        }
+
+        for-each ( $eth/l2ng-l2ald-iff-interface-entry[l2iff-interface-vlan-member-tagness == "untagged"] ) {
+            var $etname = substring-before(l2iff-interface-name,".");
+            var $duplex = {
+                if( $int/physical-interface/link-type == "Unspecified") {
+                    expr "Full-Duplex";
+                }
+                else {
+                    expr $int/physical-interface/link-type;
+                }
+            }
+            <output> jcs:printf( "%-20s%-27s%-11s%-12s%-20s%-16s%-18s", $etname, $int/physical-interface/link-level-type, $int/physical-interface/oper-status, l2iff-interface-vlan-id, l2iff-interface-vlan-member-tagness, $duplex, $int/physical-interface/speed);
+        }
+
+    }
+}

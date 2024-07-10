@@ -1,0 +1,32 @@
+jg# run op show-interfaces-status    
+Port                Description                Status     VLAN ID     Tagging             Duplex          Speed             
+et-0/0/4            Ethernet                   down                   tagged              Full-Duplex     100Gbps           
+et-0/0/5            Ethernet                   down                   tagged              Full-Duplex     100Gbps           
+et-0/0/0            Ethernet                   down                   tagged              Full-Duplex     100Gbps           
+et-0/0/1            Ethernet                   down                   tagged              Full-Duplex     100Gbps           
+et-0/0/2            Ethernet                   down                   tagged              Full-Duplex     100Gbps           
+et-0/0/3            Ethernet                   down                   tagged              Full-Duplex     100Gbps           
+et-0/0/6            Ethernet                   down                   tagged              Full-Duplex     100Gbps           
+et-0/0/7            Ethernet                   down                   tagged              Full-Duplex     100Gbps                     
+et-0/0/8            Ethernet                   down       1           untagged            Full-Duplex     100Gbps           
+et-0/0/9            Ethernet                   down       1           untagged            Full-Duplex     100Gbps           
+et-0/0/10           Ethernet                   down       1           untagged            Full-Duplex     100Gbps           
+et-0/0/11           Ethernet                   down       1           untagged            Full-Duplex     100Gbps           
+et-0/0/12           Ethernet                   down       1           untagged            Full-Duplex     100Gbps           
+et-0/0/13           Ethernet                   down       1           untagged            Full-Duplex     100Gbps           
+et-0/0/14           Ethernet                   down       1           untagged            Full-Duplex     100Gbps           
+et-0/0/15           Ethernet                   down       1           untagged            Full-Duplex     100Gbps           
+et-0/0/16           Ethernet                   down       1           untagged            Full-Duplex     100Gbps           
+et-0/0/17           Ethernet                   down       1           untagged            Full-Duplex     100Gbps           
+et-0/0/18           Ethernet                   down       1           untagged            Full-Duplex     100Gbps           
+et-0/0/19           Ethernet                   down       1           untagged            Full-Duplex     100Gbps           
+et-0/0/20           Ethernet                   down       1           untagged            Full-Duplex     100Gbps           
+et-0/0/21           Ethernet                   down       1           untagged            Full-Duplex     100Gbps           
+et-0/0/22           Ethernet                   down       1           untagged            Full-Duplex     100Gbps           
+et-0/0/23           Ethernet                   down       1           untagged            Full-Duplex     100Gbps           
+et-0/0/24           Ethernet                   down       1           untagged            Full-Duplex     100Gbps           
+et-0/0/25           Ethernet                   down       1           untagged            Full-Duplex     100Gbps           
+et-0/0/26           Ethernet                   down       1           untagged            Full-Duplex     100Gbps           
+et-0/0/27           Ethernet                   down       1           untagged            Full-Duplex     100Gbps           
+et-0/0/28           Ethernet                   down       1           untagged            Full-Duplex     100Gbps           
+et-0/0/29           Ethernet                   down       1           untagged            Full-Duplex     100Gbps 
