@@ -1,0 +1,8 @@
+# This output has been truncated. Multiple rows of zeros have been removed. 
+
+jg@switch# run op storm-control 
+Interface Name         Unicast RX        Unicast TX        Broadcast RX      Broadcast TX      Multicast RX      Multicast TX      
+et-0/0/4               0                 0                 0                 0                 0                 0                 
+et-0/0/5               0                 0                 0                 0                 0                 0                 
+et-0/0/8               4721724           24947895          17                2149701           211084            21090961                  
+et-0/0/9               957932            2495327           7169              2132755           154796            20929621                  

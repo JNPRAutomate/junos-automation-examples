@@ -1,0 +1,31 @@
+version 1.2;
+
+ns junos = "http://xml.juniper.net/junos/*/junos";
+ns xnm = "http://xml.juniper.net/xnm/1.1/xnm";
+ns jcs = "http://xml.juniper.net/junos/commit-scripts/1.0";
+
+import "../import/junos.xsl";
+
+match / {
+    <op-script-results> {
+
+        /* show interfaces extensive to capture unicast, broadcast, and multicast traffic */
+        var $rpc = {
+            <get-interface-information> {
+                <extensive>;
+            }
+        }
+        var $int = jcs:invoke( $rpc );
+
+        var $eth = jcs:invoke( "get-ethernet-switching-interface-details" );
+        <output> jcs:printf( "%-23s%-18s%-18s%-18s%-18s%-18s%-18s", "Interface Name", "Unicast RX", "Unicast TX", "Broadcast RX", "Broadcast TX", "Multicast RX", "Multicast TX");
+       
+        for-each ( $eth/l2ng-l2ald-iff-interface-entry/l2ng-l2ald-iff-interface-entry ) { 
+            var $sto-con-int =  substring-before ( l2iff-interface-name, '.' );
+            var $int-eth = $int/physical-interface[name == $sto-con-int ]/ethernet-mac-statistics;
+
+            <output> jcs:printf( "%-23s%-18s%-18s%-18s%-18s%-18s%-18s", $sto-con-int, $int-eth/input-unicasts, $int-eth/output-unicasts, $int-eth/input-broadcasts, $int-eth/output-broadcasts, $int-eth/input-multicasts, $int-eth/output-multicasts); 
+
+        }
+    }
+}
