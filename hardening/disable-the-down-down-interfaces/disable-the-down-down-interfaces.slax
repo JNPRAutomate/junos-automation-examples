@@ -1,0 +1,48 @@
+/*
+* Disables interfaces that are showing a down/down status
+*/
+ 
+version 1.2;
+ns junos = "http://xml.juniper.net/junos/*/junos";
+ns xnm = "http://xml.juniper.net/xnm/1.1/xnm";
+ns jcs = "http://xml.juniper.net/junos/commit-scripts/1.0";
+ 
+import "../import/junos.xsl";
+ 
+match / {
+ 
+    /* Open connection with mgd and show interfaces terse */
+    var $rpc = {
+            <get-interface-information> {
+                <terse>;
+            }
+        }
+    var $con = jcs:open();
+    var $int = jcs:execute($con, $rpc);
+ 
+    /* Only down down interfaces */
+    var $down-interfaces = $int/physical-interface[admin-status == 'down' && oper-status == 'down'];
+
+    /* Disable configuration for only the down/down interfaces */
+    var $xml := {
+        <configuration> {
+            for-each ( $down-interfaces ) {
+                <interfaces> {
+                    <interface> {
+                    <name> name;
+                    <disable>;
+                    }
+                }
+            }
+        }
+    }
+
+    /* Use load then commit the configuration */
+    var $results := {
+        call jcs:load-configuration($connection = $con, $configuration = $xml);
+    }
+ 
+    /* Close the mgd connection */
+    expr jcs:close($con);
+ 
+}
