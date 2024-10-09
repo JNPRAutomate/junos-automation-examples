@@ -2,6 +2,7 @@
 
 Directory structure (building out in 2024)
 - archived (the old junos-automation-examples repository with minimal scripts)
+- building blocks (simple examples)
 - configuration management (Day 2)
     - configuration backups or archives
     - configuration compliance
