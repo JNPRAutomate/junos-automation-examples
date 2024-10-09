@@ -17,6 +17,7 @@ Directory structure (building out in 2024)
 - hardening
 - installations or deployments (Day 0 or Day 1)
 - integration with 3rd party applications
+- [jet-applications](https://github.com/Juniper/jet-app-store)
 - licensing
 - notifications
     - emails (SMTP)
