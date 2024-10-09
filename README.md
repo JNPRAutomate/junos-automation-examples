@@ -27,3 +27,5 @@ Directory structure (building out in 2024)
 - [upgrades](https://github.com/JNPRAutomate/junos-software-upgrades)
 
 This project is a repository developed by the Juniper community. Some "automation" does not require a script, so there is no requirement for automation examples to have a script in their individual directories. 
+
+Other helpful repositories include the [scriptorium](https://github.com/Juniper/junoscriptorium) and [junosautomation](https://github.com/Juniper/junosautomation). 
