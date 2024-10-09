@@ -22,9 +22,11 @@ Directory structure (building out in 2024)
 - notifications
     - emails (SMTP)
     - SNMP Traps
+- protocol-specific
 - testing or validation
 - troubleshooting
 - [upgrades](https://github.com/JNPRAutomate/junos-software-upgrades)
+- utility
 
 This project is a repository developed by the Juniper community. Some "automation" does not require a script, so there is no requirement for automation examples to have a script in their individual directories. 
 
