@@ -1,0 +1,32 @@
+version 1.2;
+
+ns junos = "http://xml.juniper.net/junos/*/junos";
+ns xnm = "http://xml.juniper.net/xnm/1.1/xnm";
+ns jcs = "http://xml.juniper.net/junos/commit-scripts/1.0";
+
+import "../import/junos.xsl";
+
+/* 
+*  For testing: 
+*  var $cliTimeout = 300;
+*  
+*  For production if using 24 hours: 
+*  var $cliTimeout = 86400;
+*/
+var $cliTimeout = 300;
+
+match / {
+    <op-script-results> {
+        var $uptimeInfo = jcs:invoke ('get-system-uptime-information');
+        var $uptimeSeconds = $uptimeInfo/current-time/date-time/@junos:seconds;
+
+        var $userInfo = jcs:invoke ('get-system-users-information');
+        for-each ($userInfo/multi-routing-engine-item/system-users-information/uptime-information/user-table/user-entry) {
+            var $diff = $uptimeSeconds - login-time/@junos:seconds;
+            if ($diff > $cliTimeout) {
+                var $runcmd = <command> "request system logout terminal " _ tty;
+                var $outcmd = jcs:invoke ($runcmd);
+            }
+        }
+    }
+}
