@@ -1,0 +1,24 @@
+version 1.2;
+ 
+ns junos = "http://xml.juniper.net/junos/*/junos";
+ns xnm = "http://xml.juniper.net/xnm/1.1/xnm";
+ns jcs = "http://xml.juniper.net/junos/commit-scripts/1.0";
+ 
+import "../import/junos.xsl";
+ 
+match / {
+    var $banner = '
+**************************************************
+*             Juniper Networks, Inc.             *
+*             Authorized Access Only             *
+**************************************************
+';
+    <op-script-results> {
+        var $eth = jcs:invoke( "get-system-information" );
+        var $host = "Hostname: " _ $eth/host-name;
+        var $hardware = "Hardware: " _ $eth/hardware-model;
+        expr jcs:output($banner);
+        expr jcs:output($host);
+        expr jcs:output($hardware);
+    }
+}
