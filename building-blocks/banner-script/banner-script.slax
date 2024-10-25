@@ -1,0 +1,25 @@
+/*
+ * This banner says "I HEART JUNOS" in binary
+ */
+version 1.2;
+ 
+ns junos = "http://xml.juniper.net/junos/*/junos";
+ns xnm = "http://xml.juniper.net/xnm/1.1/xnm";
+ns jcs = "http://xml.juniper.net/junos/commit-scripts/1.0";
+ 
+import "../import/junos.xsl";
+ 
+match / {
+    var $banner = '
+* ****************************************************
+*                                                    *
+*   01001001 01001000 01000101 01000001 01010010     *
+*   01010100 01001010 01010101 01001110              *
+*   01010011                                         *
+*                                                    *
+* ****************************************************
+';
+    <op-script-results> {
+	expr jcs:output($banner);
+    }
+}
