@@ -1,0 +1,12 @@
+***************************** Device: lab-mx480 ******************************
+Tests Included: interface-stats-check 
+************************** Command: show interfaces **************************
+interface-stats-check : Skipped
+
+or
+
+***************************** Device: lab-mx480 ******************************
+Tests Included: interface-stats-check 
+************************** Command: show interfaces **************************
+Test Failed!!! input traffic of interface ['xe-0/0/0'] changed by XX%, 5336 in pre-snap and 2984 in post-snap
+FAIL | All "traffic-statistics/input-bps[. > 300]" is not with in delta difference of 20% [ 2 value matched / 1 value failed ]

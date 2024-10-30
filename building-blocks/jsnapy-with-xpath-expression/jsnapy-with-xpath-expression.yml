@@ -1,0 +1,8 @@
+interface-stats-check:
+  - command: show interfaces
+  - iterate:
+      xpath: //physical-interface[contains(name, "ge") or contains(name, "et") or contains(name, "xe")]
+      id: name
+      tests:
+           - delta: traffic-statistics/input-bps[. > 300], 20%
+             ignore-null: True
