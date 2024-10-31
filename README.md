@@ -1,6 +1,6 @@
 ## Repository dedicated to automating with Junos
 
-Directory structure (building out in 2024)
+Directory structure  
 - archived (the old junos-automation-examples repository with minimal scripts)
 - building blocks (simple examples)
 - configuration management (Day 2)
