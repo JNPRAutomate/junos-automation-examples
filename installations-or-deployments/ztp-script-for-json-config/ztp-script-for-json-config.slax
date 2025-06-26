@@ -1,0 +1,25 @@
+version 1.2;
+
+ns junos = "http://xml.juniper.net/junos/*/junos";
+ns xnm = "http://xml.juniper.net/xnm/1.1/xnm";
+ns jcs = "http://xml.juniper.net/junos/commit-scripts/1.0";
+ns ext = "http://xmlsoft.org/XSLT/namespace";
+
+import "../import/junos.xsl";
+
+match / {
+    <op-script-results> {
+
+        var $load-with-json = <load-configuration> {
+            "configuration" : {
+                "system" : {
+                    "host-name" : "jsonhostname"
+                }
+            }
+        }
+        var $conn = jcs:open();
+        var $loadconfig = jcs:execute($conn, $load-with-json);
+        var $commit = jcs:execute($conn, "commit-configuration");
+        var $close = jcs:close($conn);
+    }
+}

@@ -1,0 +1,9 @@
+#Built for ZTP but tested as an op script
+jessica@xmlhostname> op json-ztp-script 
+
+{master:0}
+jessica@xmlhostname> 
+
+{master:0}
+jessicar@jsonhostname> show configuration system host-name 
+host-name jsonhostname;

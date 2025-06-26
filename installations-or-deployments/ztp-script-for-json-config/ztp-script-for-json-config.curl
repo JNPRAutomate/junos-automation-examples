@@ -1,0 +1,10 @@
+When I first started testing, I used a QFX running EVO, so I used curl commands. I have included these commands here for fun. Replace the IP address, username, and password to make these command work. 
+
+Using REST to configure the host-name to xmlhostname when testing
+curl http://X.X.X.X:3000/rpc -u 'username:password' -d "<load-configuration><configuration><system><host-name>xmlhostname</host-name></system></configuration></load-configuration>"
+
+Using REST to check if our REST API can handle a JSON config, and of course it can
+curl http://X.X.X.X:3000/rpc -u 'username:password' -d '<load-configuration format="json"><configuration-json>{ "configuration" : { "system" : { "host-name" : "jsonhostname" } } }</configuration-json></load-configuration>'
+
+Put load-configuration into the RPC and Junos can still handle it
+curl http://X.X.X.X:3000/rpc/load-configuration@format=json -u 'username:password' -d '<configuration-json>{ "configuration" : { "system" : { "host-name" : "jsonhostname" } } }</configuration-json>'
