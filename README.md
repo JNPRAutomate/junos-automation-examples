@@ -18,6 +18,7 @@ Directory structure
 - installations or deployments (Day 0 or Day 1)
 - integration with 3rd party applications
 - [jet-applications](https://github.com/Juniper/jet-app-store)
+- junos-logger
 - licensing
 - notifications
     - emails (SMTP)
