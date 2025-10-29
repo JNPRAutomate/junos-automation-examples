@@ -21,24 +21,24 @@ def display_junos_context():
     
     # Device information
     print("-" * 70)
-    print("DEVICE INFORMATION:")
+    print("DEVICE INFORMATION")
     print("-" * 70)
-    print(f"The hostname of this device is: {Junos_Context.get('hostname', 'N/A')}")
-    print(f"The product model of this device is: {Junos_Context.get('product', 'N/A')}")
-    print(f"The chassis type is: {Junos_Context.get('chassis', 'N/A')}")
-    print(f"The Routing Engine name is: {Junos_Context.get('routing-engine-name', 'N/A')}")
+    print(f"The hostname of this device is: {Junos_Context.get('hostname')}")
+    print(f"The product model of this device is: {Junos_Context.get('product')}")
+    print(f"The chassis type is: {Junos_Context.get('chassis')}")
+    print(f"The Routing Engine name is: {Junos_Context.get('routing-engine-name')}")
     
     # User context information
     print("-" * 70)
-    print("USER CONTEXT INFORMATION:")
+    print("USER CONTEXT INFORMATION")
     print("-" * 70)
     user_context = Junos_Context.get('user-context', {})
     
     if user_context:
-        print(f"The login name is: {user_context.get('login-name', 'N/A')}")
-        print(f"The local user name is: {user_context.get('user', 'N/A')}")
-        print(f"The user class name is: {user_context.get('class-name', 'N/A')}")
-        print(f"The user ID (UID) is: {user_context.get('uid', 'N/A')}")
+        print(f"The login name is: {user_context.get('login-name')}")
+        print(f"The local user name is: {user_context.get('user')}")
+        print(f"The user class name is: {user_context.get('class-name')}")
+        print(f"The user ID (UID) is: {user_context.get('uid')}")
     else:
         print("User context information is not available")
     
@@ -54,19 +54,19 @@ def display_junos_context():
     
     # Time information
     print("-" * 70)
-    print("TIME INFORMATION:")
+    print("TIME INFORMATION")
     print("-" * 70)
-    print(f"The local time is: {Junos_Context.get('localtime', 'N/A')}")
-    print(f"The local time (ISO format) is: {Junos_Context.get('localtime-iso', 'N/A')}")
+    print(f"The local time is: {Junos_Context.get('localtime')}")
+    print(f"The local time (ISO format) is: {Junos_Context.get('localtime-iso')}")
     print()
     
     # Script execution information
     print("-" * 70)
-    print("SCRIPT EXECUTION INFORMATION:")
+    print("SCRIPT EXECUTION INFORMATION")
     print("-" * 70)
-    print(f"The script type is: {Junos_Context.get('script-type', 'N/A')}")
-    print(f"The process ID (PID) is: {Junos_Context.get('pid', 'N/A')}")
-    print(f"The TTY of the user's session is: {Junos_Context.get('tty', 'N/A')}")
+    print(f"The script type is: {Junos_Context.get('script-type')}")
+    print(f"The process ID (PID) is: {Junos_Context.get('pid')}")
+    print(f"The TTY of the user's session is: {Junos_Context.get('tty')}")
     
     # Check for software upgrade
     sw_upgrade = Junos_Context.get('sw-upgrade-in-progress')
@@ -80,7 +80,7 @@ def display_junos_context():
     # op script context (if available)
     if 'op-context' in Junos_Context:
         print("-" * 70)
-        print("OP SCRIPT CONTEXT:")
+        print("OP SCRIPT CONTEXT")
         print("-" * 70)
         op_context = Junos_Context.get('op-context', {})
         
@@ -93,7 +93,7 @@ def display_junos_context():
     # Commit script  context (if available)
     if 'commit-context' in Junos_Context:
         print("-" * 70)
-        print("COMMIT SCRIPT CONTEXT:")
+        print("COMMIT SCRIPT CONTEXT")
         print("-" * 70)
         commit_context = Junos_Context.get('commit-context', {})
         
@@ -138,4 +138,3 @@ def display_junos_context():
 if __name__ == "__main__":
     # Display formatted context information
     display_junos_context()
-    

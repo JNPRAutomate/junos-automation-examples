@@ -1,0 +1,35 @@
+jessica@vMX-addr-0# run op global_parameters_variables.py    
+======================================================================
+PRINTING GLOBAL PARAMETERS AND VARIABLES USING JUNOS CONTEXT
+======================================================================
+----------------------------------------------------------------------
+DEVICE INFORMATION
+----------------------------------------------------------------------
+The hostname of this device is: vMX-addr-0
+The product model of this device is: vmx
+The chassis type is: others
+The Routing Engine name is: re0
+----------------------------------------------------------------------
+USER CONTEXT INFORMATION
+----------------------------------------------------------------------
+The login name is: jessica
+The local user name is: jessica
+The user class name is: j-super-user
+The user ID (UID) is: 2000
+This script is executing on the master Routing Engine: Yes
+----------------------------------------------------------------------
+TIME INFORMATION
+----------------------------------------------------------------------
+The local time is: Wed Oct 29 03:58:48 2025
+The local time (ISO format) is: 2025-10-29 03:58:48 UTC
+----------------------------------------------------------------------
+SCRIPT EXECUTION INFORMATION
+----------------------------------------------------------------------
+The script type is: op
+The process ID (PID) is: 31762
+The TTY of the user's session is: /dev/pts/1
+Software upgrade in progress: No
+----------------------------------------------------------------------
+OP SCRIPT CONTEXT
+----------------------------------------------------------------------
+This op script was executed locally
