@@ -15,10 +15,8 @@ match / {
 ';
     <op-script-results> {
         var $eth = jcs:invoke( "get-system-information" );
-        var $host = "Hostname: " _ $eth/host-name;
-        var $hardware = "Hardware: " _ $eth/hardware-model;
         expr jcs:output($banner);
-        expr jcs:output($host);
-        expr jcs:output($hardware);
+        expr jcs:output("Hostname: ",$eth/host-name);
+        expr jcs:output("Hardware: ",$eth/hardware-model);
     }
 }
